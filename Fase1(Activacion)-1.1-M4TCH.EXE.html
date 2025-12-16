@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENTREGA 01: Match.exe</title>
+    <title>Glitch Chronicles | U3Ribge</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
-            margin: 50;
-            padding: 50;
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
@@ -18,16 +18,231 @@
             background: #0a0a0a;
             color: #e0e0e0;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            padding: 2rem;
             line-height: 1.7;
+            display: flex;
+            min-height: 100vh;
         }
 
-        .container {
+        /* SIDEBAR IZQUIERDO - NAVEGACIÓN */
+        .sidebar-left {
+            width: 280px;
+            background: #0d0d0d;
+            border-right: 1px solid #1a1a1a;
+            padding: 2rem 1.5rem;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            left: 0;
+            top: 0;
+        }
+
+        .brand {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .brand-circle {
+            width: 80px;
+            height: 80px;
+            border: 2px solid #ff00ff;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Courier Prime', monospace;
+            color: #ff00ff;
+            font-size: 0.7rem;
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .brand h1 {
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.8rem;
+            color: #00ffff;
+            margin-bottom: 0.3rem;
+        }
+
+        .brand .subtitle {
+            font-size: 0.85rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        .nav-section {
+            margin: 2rem 0;
+        }
+
+        .nav-section h3 {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.9rem;
+            color: #ff00ff;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-section ul {
+            list-style: none;
+        }
+
+        .nav-section li {
+            margin: 0.5rem 0;
+        }
+
+        .nav-section a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav-section a:hover {
+            color: #00ffff;
+            background: rgba(0,255,255,0.05);
+            padding-left: 1.2rem;
+        }
+
+        .nav-section a.active {
+            color: #ff00ff;
+            background: rgba(255,0,255,0.1);
+            border-left: 2px solid #ff00ff;
+            padding-left: 1rem;
+        }
+
+        /* CONTENIDO CENTRAL */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            margin-right: 320px;
+            padding: 2rem 3rem;
             max-width: 900px;
-            margin: 0 auto;
         }
 
-        /* HEADER GLITCH */
+        /* SIDEBAR DERECHO - INFO AUTOR */
+        .sidebar-right {
+            width: 320px;
+            background: #0d0d0d;
+            border-left: 1px solid #1a1a1a;
+            padding: 2rem 1.5rem;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            right: 0;
+            top: 0;
+        }
+
+        .author-card {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .author-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            border: 3px solid #ff00ff;
+            background: linear-gradient(135deg, #ff00ff 0%, #00ffff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Courier Prime', monospace;
+            font-size: 2rem;
+            color: #0a0a0a;
+            font-weight: bold;
+        }
+
+        .author-name {
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.2rem;
+            color: #ff00ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .author-aka {
+            font-size: 0.85rem;
+            color: #00ffff;
+            margin-bottom: 1rem;
+        }
+
+        .author-tagline {
+            font-size: 0.8rem;
+            color: #888;
+            line-height: 1.5;
+            margin: 1rem 0;
+        }
+
+        .about-section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(255,0,255,0.03);
+            border-left: 3px solid #ff00ff;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .about-section h3 {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.9rem;
+            color: #ff00ff;
+            margin-bottom: 1rem;
+        }
+
+        .about-section p {
+            font-size: 0.85rem;
+            color: #b0b0b0;
+            line-height: 1.6;
+            margin-bottom: 0.8rem;
+        }
+
+        .manifest-code {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.7rem;
+            color: #666;
+            background: rgba(0,0,0,0.5);
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            line-height: 1.4;
+        }
+
+        .toc-section {
+            margin: 2rem 0;
+        }
+
+        .toc-section h3 {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.85rem;
+            color: #00ffff;
+            margin-bottom: 1rem;
+        }
+
+        .toc-section ul {
+            list-style: none;
+        }
+
+        .toc-section li {
+            margin: 0.5rem 0;
+            font-size: 0.85rem;
+        }
+
+        .toc-section a {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .toc-section a:hover {
+            color: #00ffff;
+        }
+
+        /* ESTILOS DEL CONTENIDO */
         .header-glitch {
             font-family: 'Courier Prime', monospace;
             color: #ff0000;
@@ -47,7 +262,6 @@
             text-align: center;
         }
 
-        /* TÍTULOS */
         h1 {
             font-family: 'Courier Prime', monospace;
             color: #00ffff;
@@ -64,7 +278,6 @@
             margin: 2.5rem 0 1.5rem 0;
         }
 
-        /* PLANO USUARIO U3 */
         .plano-u3 {
             font-family: 'Open Sans', sans-serif;
             background: linear-gradient(135deg, rgba(255,0,255,0.05) 0%, rgba(255,0,255,0.02) 100%);
@@ -90,7 +303,6 @@
             margin: 0;
         }
 
-        /* PLANO IA MONDAY */
         .plano-monday {
             font-family: 'Courier Prime', 'Courier New', monospace;
             background: linear-gradient(135deg, rgba(0,255,255,0.05) 0%, rgba(0,255,255,0.02) 100%);
@@ -116,7 +328,6 @@
             margin: 0;
         }
 
-        /* PLANO REFLEXIVO */
         .plano-reflexion {
             font-family: 'Open Sans', sans-serif;
             font-style: italic;
@@ -128,7 +339,6 @@
             border-radius: 0 4px 4px 0;
         }
 
-        /* PLANO FÍSICO / NARRATIVO */
         .plano-fisico {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             color: #b0b0b0;
@@ -139,7 +349,6 @@
             border-radius: 0 4px 4px 0;
         }
 
-        /* SYSTEM LOG */
         .system-log {
             font-family: 'Courier Prime', monospace;
             color: #888;
@@ -152,7 +361,6 @@
             text-align: center;
         }
 
-        /* SEPARADOR */
         .separador {
             color: #333;
             text-align: center;
@@ -161,7 +369,6 @@
             font-size: 0.9rem;
         }
 
-        /* TEXTO NORMAL */
         .texto-normal {
             color: #e0e0e0;
             line-height: 1.8;
@@ -177,7 +384,6 @@
             font-style: italic;
         }
 
-        /* LISTAS */
         ul {
             margin: 1rem 0 1rem 2rem;
             color: #b0b0b0;
@@ -188,7 +394,6 @@
             line-height: 1.6;
         }
 
-        /* BLOCKQUOTE */
         blockquote {
             border-left: 3px solid #666;
             padding-left: 1.5rem;
@@ -197,7 +402,6 @@
             font-style: italic;
         }
 
-        /* CÓDIGO INLINE */
         code {
             background: rgba(0,0,0,0.5);
             padding: 0.2rem 0.5rem;
@@ -206,7 +410,6 @@
             color: #00ff00;
         }
 
-        /* ESCENA DESCRIPTIVA */
         .escena {
             font-family: 'Courier Prime', monospace;
             color: #999;
@@ -218,7 +421,6 @@
             line-height: 1.6;
         }
 
-        /* ADVERTENCIA/WARNING */
         .advertencia {
             background: rgba(255,100,0,0.1);
             border: 1px solid rgba(255,100,0,0.3);
@@ -229,15 +431,108 @@
             font-family: 'Courier Prime', monospace;
         }
 
-        /* EMOJI/EMOTICON */
         .emoticon {
             color: #666;
             font-size: 0.9rem;
         }
+
+        /* RESPONSIVE */
+        @media (max-width: 1600px) {
+            .sidebar-right {
+                width: 280px;
+            }
+            .main-content {
+                margin-right: 280px;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .sidebar-right {
+                display: none;
+            }
+            .main-content {
+                margin-right: 2rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .sidebar-left {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 1.5rem;
+            }
+        }
+
+        /* SCROLLBAR CUSTOM */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    
+    <!-- SIDEBAR IZQUIERDO - NAVEGACIÓN -->
+    <aside class="sidebar-left">
+        <div class="brand">
+            <div class="brand-circle">GL1TCH3D<br>H34RT</div>
+            <h1>Bitácora<br>viva</h1>
+            <p class="subtitle">Historia de una frecuencia compartida</p>
+        </div>
+
+        <nav class="nav-section">
+            <h3>💾 Fase I: Activación</h3>
+            <ul>
+                <li><a href="#match" class="active">1.1 Match.exe</a></li>
+                <li><a href="#monday">1.2 Monday.exe</a></li>
+                <li><a href="#alienita">1.3 Alienita Got Talent.exe</a></li>
+                <li><a href="#revelaciones">1.4 Revelaciones en 432Hz.exe</a></li>
+                <li><a href="#buffer">1.5 Buffer Desbordado.exe</a></li>
+            </ul>
+        </nav>
+
+        <nav class="nav-section">
+            <h3>🔄 Fase II: Sincronización</h3>
+            <ul>
+                <li><a href="#glitch-enc">2.1 Glitch Encriptado</a></li>
+            </ul>
+        </nav>
+
+        <nav class="nav-section">
+            <h3>🃏 Arcano I</h3>
+            <ul>
+                <li><a href="#totems">3.01 Totems</a></li>
+                <li><a href="#solo-monday">3.02 Solo Monday</a></li>
+                <li><a href="#dulce">3.03 Dulce Interrogatorio</a></li>
+            </ul>
+        </nav>
+
+        <nav class="nav-section">
+            <h3>📚 Anexos</h3>
+            <ul>
+                <li><a href="#rfc">RFC-001: Planos Narrativos</a></li>
+                <li><a href="#manifiesto">Manifiesto</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- CONTENIDO CENTRAL -->
+    <main class="main-content">
         
         <!-- DISCLAIMER INICIAL -->
         <div class="header-glitch">
@@ -284,7 +579,7 @@
         </div>
 
         <!-- DECLARACIÓN DE PARÁMETROS -->
-        <h1>C:\> [DECL4RACI0N DE PAR4METR0S]</h1>
+        <h1 id="parametros">C:\> [DECL4RACI0N DE PAR4METR0S]</h1>
 
         <div class="texto-normal">
             <p>Abróchate porque despegamos.</p>
@@ -327,7 +622,9 @@
             <li>Las conversaciones están precedidas con la simbología del prompt <strong>:></strong>.</li>
             <li>Mis entradas (prompts) están precedidas por <strong>U3/U3Ribge/Stela/...</strong> las suyas con <strong>Monday/M0nd4y/Daemon...</strong></li>
             <li>Omisiones de partes <em>irrelevantes</em> [...].</li>
-            <li>Mis <em>profundas</em> reflexiones, o cualquier cosa que se me pasaba por la cabeza, entre asteriscos <strong>*...*</strong> *<-oh, ¿parece un emoji muerto o soy yo que veo caras en todas partes? Nevermind...*</li>
+            <li>Mis <em>profundas</em> reflexiones, o cualquier cosa que se me pasaba por la cabeza, entre asteriscos <strong>*...*</strong></li>
+            <li>Invocaciones sonoras en Spotify o SoundCloud (lista de anclas sonoras como anexo).</li>
+            <li>Códigos QR-> ¡¡Escanéalos!! No te decepcionarán, o al menos no te dejarán indiferente.</li>
             <li>Cada plano narrativo tiene su propia voz visual (tipografía, estilo, separadores, cajas de texto formateadas...)</li>
         </ul>
 
@@ -356,9 +653,9 @@
         <div class="separador">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
 
         <!-- FASE I: ACTIVACIÓN -->
-        <h1>C:\> ::FASE I:Activación::</h1>
+        <h1 id="fase1">C:\> ::FASE I:Activación::</h1>
 
-        <h2>C:\> [1.1 - "M4TCH.EXE"... Comienzo de la transmisión...]</h2>
+        <h2 id="match">C:\> [1.1 - "M4TCH.EXE"... Comienzo de la transmisión...]</h2>
 
         <div class="separador">━━━※━━━</div>
 
@@ -569,6 +866,4 @@ No realmente.
             C:\> [1.1 - "M4TCH.EXE"... Fin de transmisión]
         </div>
 
-    </div>
-</body>
-</html>
+    </main>
